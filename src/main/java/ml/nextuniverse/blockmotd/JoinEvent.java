@@ -2,6 +2,8 @@ package ml.nextuniverse.blockmotd;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -26,6 +28,12 @@ public class JoinEvent implements Listener {
 //            hostname.remove(e.getPlayer().getName());
 //        }
 //    }
+
+    @EventHandler
+    public void onJoin(PostLoginEvent e) {
+        e.getPlayer().setTabHeader(new ComponentBuilder("NextUniverse").color(ChatColor.LIGHT_PURPLE).bold(true).append(" | ")
+        .color(ChatColor.DARK_GRAY).bold(false).append(" nextuniverse.ml").color(ChatColor.AQUA).create(), new ComponentBuilder("Support the server: ").color(ChatColor.GRAY).append("nextuniverse.buycraft.net").color(ChatColor.AQUA).create());
+    }
 
     // Allows for a custom version when using an outdated version & fakes a non-existent server
     @EventHandler(priority = EventPriority.HIGHEST)
